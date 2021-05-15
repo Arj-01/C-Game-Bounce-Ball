@@ -3,10 +3,10 @@
 
 // GAME RULES -->;
 
-// rule 1 = with every bounce of ball on cart , u will get plus 10 score;
-// rule 2 = if ball hits ground -5 score;
-// rule 3 = if your cart hits one of the wall then score -2 of initial value;
-// rule 4  = "Game over" if your total sum of score is less than zero;
+// rule 1 = with every bounce on cart , u will get plus 10 score;
+// rule 2 = if ball hits ground -5;
+// rule 3 = if your cart hits one of the wall then score -2 of current value;
+// rule 4  = "Game over" if your total sum of score is less than or equal to zero;
 
 // control --> use 'a' to move your cart leftward;
 //             use 'b' to move your cart rightward;
@@ -67,7 +67,7 @@ public:
 
    }
 
-    ////  below draw() function will draw the game i.e, walls, object ;
+    ////  below draw() function will create the environment of the game; Ex-> walls, objects etc ;
 
    void draw()
    {
@@ -142,7 +142,7 @@ public:
 void logic()
 {
 
-  // initially- down trajectory of the ball;
+                            // initially- down trajectory of the ball;
    if (px==x && py ==y)
   {
 
@@ -154,7 +154,7 @@ void logic()
   {
       score+=10;
 
-    // random directory of ball after hitting the the cart;
+                               // random directory of ball after hitting the the cart;
 
      dir = (gdirectory)((rand()%3)+1);
 
@@ -171,13 +171,13 @@ void logic()
   else if(x==carx+1 && y==cary-1)
   {
       score+=10;
-//// random directory of ball after hitting the the cart;
+                            //// random directory of ball after hitting the the cart;
 
      dir = (gdirectory)((rand()%3)+1);
       cout<<score;
   }
 
-   //// if ball hits right wall
+                       //// if ball hits right wall
 
 
   else if( x==width-2 )
@@ -188,21 +188,21 @@ void logic()
 
   }
 
-   //// if ball hits left ball wall
+                      //// if ball hits left ball wall
 
   else if (x==0)
   {
       dir = upright;
   }
 
-   //////////////// if ball hits the ceiling;
+                        //////////////// if ball hits the ceiling;
 
   else if (y==0)
   {
       dir = down;
   }
 
-  /////////// if ball hits the ground;
+                        /////////// if ball hits the ground;
 
   else if ( y == height)
   {
@@ -213,14 +213,14 @@ void logic()
 
   }
 
-   // right corner of the cart hits the right wall;
+                      // right corner of the cart hits the right wall;
   else if (carx+1==width-2)
   {
       score -=2;
       dir1 = LEFT;
   }
 
-  // left corner of the cart hits the left wall;
+                     // left corner of the cart hits the left wall;
   else if (carx-1==0 )
   {
       score -=2;
@@ -230,7 +230,7 @@ void logic()
 
   else {cout<<" score: "<<score<<endl;}
 
-// if score<0 game over;
+                   // if score<0 game over;
   if (score<0)
   {
       gameover = true;
@@ -239,7 +239,7 @@ void logic()
 
 }
 
- // input given by keyboard for cart to move
+                 // input given by keyboard for cart to move
 
 void input()
 {
@@ -264,11 +264,7 @@ case 'd':
 
 }
 
-
-
-
-
-// below are the trajectories given by specially adjusted directories;
+       // below are the trajectories given by specially adjusted directories;
 
 void setup()
 {
